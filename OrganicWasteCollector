@@ -1,0 +1,12 @@
+public class OrganicWasteCollector extends WasteCollector {
+    @Override
+    protected boolean canHandle(WasteContainer container) {
+        return "organic".equalsIgnoreCase(container.getType());
+    }
+
+    @Override
+    protected void process(WasteContainer container) {
+        System.out.println("Organic waste collected from container with capacity: " + container.getCapacity());
+        container.setCurrentLevel(0); // Reset the waste level after collection
+    }
+}
