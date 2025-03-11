@@ -1,6 +1,13 @@
 # LAB-ASS-3
 SOFT ENG LAB 2
 
-A vending machine needs to manage different states, including "Idle", "ItemSelected",
-"Dispensing", and "OutOfOrder". Each state has specific rules and restrictions regarding allowed
-operations, and the vending machine has associated attributes like item inventory and balance
+Background: Municipalities and cities face significant challenges in managing and efficiently
+disposing of waste. Traditional waste collection methods often result in delays, inefficiencies,
+and high operational costs. An innovative solution is needed to automate the waste
+management process, ensuring timely collection and disposal while optimizing resource
+utilization.
+
+Objective: Develop an automated waste management system that uses a chain of
+responsibility pattern to ensure efficient waste collection and disposal. The system should
+handle different types of waste containers and trigger appropriate disposal actions based on the
+type and capacity of each container.
