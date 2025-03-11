@@ -1,0 +1,21 @@
+public abstract class WasteCollector {
+    private WasteCollector nextCollector;
+
+    public void setNextCollector(WasteCollector nextCollector) {
+        this.nextCollector = nextCollector;
+    }
+
+    public void handleRequest(WasteContainer container) {
+        if (canHandle(container)) {
+            process(container);
+        } else if (nextCollector != null) {
+            nextCollector.handleRequest(container);
+        } else {
+            System.out.println("No collector available to handle " + container.getType() + " waste.");
+        }
+    }
+
+    protected abstract boolean canHandle(WasteContainer container);
+
+    protected abstract void process(WasteContainer container);
+}
