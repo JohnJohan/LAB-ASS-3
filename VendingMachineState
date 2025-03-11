@@ -1,6 +1,37 @@
-public interface VendingMachineState {
-    void selectItem(VendingMachine vendingMachine, String item);
-    void insertCoin(VendingMachine vendingMachine, int amount);
-    void dispenseItem(VendingMachine vendingMachine);
-    void setOutOfOrder(VendingMachine vendingMachine);
+public class AutomatedWasteManagementSystem {
+    public static void main(String[] args) {
+        // Create the chain of waste collectors
+        WasteCollector organicCollector = new OrganicWasteCollector();
+        WasteCollector recyclableCollector = new RecyclableWasteCollector();
+        WasteCollector hazardousCollector = new HazardousWasteCollector();
+
+        // Set the chain: organic -> recyclable -> hazardous
+        organicCollector.setNextCollector(recyclableCollector);
+        recyclableCollector.setNextCollector(hazardousCollector);
+
+        // Create waste containers
+        WasteContainer organicContainer = new WasteContainer("organic", 100);
+        WasteContainer recyclableContainer = new WasteContainer("recyclable", 200);
+        WasteContainer hazardousContainer = new WasteContainer("hazardous", 50);
+        WasteContainer unknownContainer = new WasteContainer("unknown", 150);
+
+        // Simulate waste collection
+        organicContainer.setCurrentLevel(100); // Organic container is full
+        recyclableContainer.setCurrentLevel(200); // Recyclable container is full
+        hazardousContainer.setCurrentLevel(50); // Hazardous container is full
+        unknownContainer.setCurrentLevel(150); // Unknown container is full
+
+        // Trigger waste collection process
+        System.out.println("Processing organic container:");
+        organicCollector.handleRequest(organicContainer);
+
+        System.out.println("\nProcessing recyclable container:");
+        organicCollector.handleRequest(recyclableContainer);
+
+        System.out.println("\nProcessing hazardous container:");
+        organicCollector.handleRequest(hazardousContainer);
+
+        System.out.println("\nProcessing unknown container:");
+        organicCollector.handleRequest(unknownContainer);
+    }
 }
