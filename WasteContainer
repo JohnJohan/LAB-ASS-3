@@ -1,0 +1,30 @@
+public class WasteContainer {
+    private String type; // Type of waste (e.g., organic, recyclable, hazardous)
+    private int capacity; // Capacity of the container
+    private int currentLevel; // Current waste level in the container
+
+    public WasteContainer(String type, int capacity) {
+        this.type = type;
+        this.capacity = capacity;
+        this.currentLevel = 0;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public int getCurrentLevel() {
+        return currentLevel;
+    }
+
+    public void setCurrentLevel(int currentLevel) {
+        this.currentLevel = currentLevel;
+    }
+
+    public boolean isFull() {
+        return currentLevel >= capacity;
+    }
